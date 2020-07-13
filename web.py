@@ -193,5 +193,10 @@ def shuchulssx():
     '''
     return html
 
+<<<<<<< HEAD
 web.run()
 #web.run(host="0.0.0.0",port=80)#运行服务器
+=======
+#web.run()
+web.run(host="0.0.0.0",port=80)#运行服务器
+>>>>>>> 1a2e5d72757345c3291fbd111d1ea3cfdedd4643
