@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标准示范</title>
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+</head>
+
+<body>
+    <div>
+        <div class="navs">
+            <ul class="nav nav-pills">
+                <li role="presentation"><a href="index.html">斗图</a></li>
+                <li role="presentation" class="active"><a href="company.html">公司列表</a></li>
+                <li role="presentation"><a href="yzm.html">50W验证码查看平台</a></li>
+                <li role="presentation"><a href="achievement.html">我们的成果</a></li>
+            </ul>
+        </div>
+
+        <div class="company-box">
+            <div class="dw_table">
+                <div class="el title">
+                    <span class="t1">公司编号
+                    </span>
+                    <span class="t5">公司logo</span>
+
+                    <span class="t2">公司名</span>
+                    <span class="t3">公司详情地址
+                    </span>
+                    <span class="t4">公司类型
+                    </span>
+                </div>
+                <div class="company-pj">
+
+                </div>
+            </div>
+            <nav aria-label="Page navigation">
+                <ul class="pagination pagination-lg" id="page">
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</body>
+<script src="static/jquery-3.5.1.min.js"></script>
+<script src="static/bootstrap.min.js"></script>
+<script>
+    $(function () {
+
+        load(1);
+        var page = '';
+
+        var max = '';
+
+        function load(page) {
+
+            var html = '';
+            $.ajax({
+                url: 'http://www.qqyulan.com/job51?page=' + page + '&limit=20',
+                dataType: "JSON",
+                contentType: "application/json;charset=utf-8",
+                type: 'get',
+
+                success: function (data) {
+                    console.log(1)
+                    res = data.data;
+                    var totalPages = data.count;
+                    for (var i = 0; i <= res.length; i++) {
+                        try {
+                            console.log(res[i].id)
+                            html += `    <div class="el">
+                    <p class="t1 ">  ` + res[i].id + `      </p>
+                     <span class="t5">
+                        <img src="` + res[i].icon + `"/> </span>
+                       
+                    <span class="t2"><a target="_blank" title="" href="javascript:;">  ` + res[i]
+                                .title + `  </a></span>
+                    <span class="t3">
+                        <a href="./companyDetail.html?href=` + res[i].href + `">详情地址</a>
+                        </span>
+                    <span class="t4">` + res[i].type + ` </span>
+                    
+                </div>`
+                        } catch (error) {
+
+                        }
+
+                    }
+                    $('.company-pj').html(html)
+                    var element = $('#page');
+                    var options = {
+                        bootstrapMajorVersion: 3,
+                        currentPage: page, // 当前页数
+                        numberOfPages: 20, // 显示按钮的数量
+                        totalPages: totalPages, // 总页数
+                        itemTexts: function (type, page, current) {
+                            switch (type) {
+                                case "first":
+                                    return "首页";
+                                case "prev":
+                                    return "上一页";
+                                case "next":
+                                    return "下一页";
+                                case "last":
+                                    return "末页";
+                                case "page":
+                                    return page;
+                            }
+                        },
+                        // 点击事件，用于通过Ajax来刷新整个list列表
+                        onPageClicked: function (event, originalEvent, type, page) {
+                            load(page);
+                        }
+                    };
+
+                    element.bootstrapPaginator(options);
+
+
+                    //最大页数，查到的最大页数交个默认的最大页数
+                }
+            });
+        }
+
+
+    })
+</script>
+
+</html>
