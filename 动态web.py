@@ -71,4 +71,5 @@ def sjjg():
     html=open("sjjg.html","r",encoding="utf-8").read()
     return html
 
-web.run()
+web.run(host="0.0.0.0",port=80)#运行服务器
+
