@@ -1,10 +1,13 @@
 from flask import Flask
 from flask import request,make_response
+from flask import render_template
 from pymongo import MongoClient
 from json import dumps
 import json
 from bson import ObjectId
+
 web = Flask(__name__)
+
 client = MongoClient()
 
 class JSONEncoder(json.JSONEncoder):
@@ -33,28 +36,40 @@ def lesson_c(lesson):
         return list(lssx_collection.find())
     elif lesson==2:
         return list(sjjg_collection.find())
+def language(zfc):#检测输入字符串是否合法
+    if "<a" in zfc:
+        return False
+    elif "< a" in zfc:
+        return False
+    elif "<A" in zfc:
+        return False
+    elif "< A" in zfc:
+        return False
+    else:
+        return True
 
 def fenhang(collection):
     for ti in collection:
         ti["question"] = ti["question"].replace("\n","")#一些乱码处理
         ti["ans"] = ti["ans"].replace("\n","")
-        n=int(len(ti["question"])/25)
-        zfc=""
-        for i in range(n):
-            zfc=zfc+"<xmp>"+ti["question"][25*i:25*(i+1)]+"</xmp>"
-        zfc=zfc+"<xmp>"+ti["question"][25*n:]+"</xmp>"
-        ti["question"]=zfc
-        n=int(len(ti["ans"])/25)
-        zfc=""
-        for i in range(n):
-            zfc=zfc+"<xmp>"+ti["ans"][25*i:25*(i+1)]+"</xmp>"
-        zfc=zfc+"<xmp>"+ti["ans"][25*n:]+"</xmp>"
-        ti["ans"]=zfc
+        if not language(ti["question"]):
+            n=int(len(ti["question"])/25)
+            zfc=""
+            for i in range(n):
+                zfc=zfc+"<xmp>"+ti["question"][25*i:25*(i+1)]+"</xmp>"
+            zfc=zfc+"<xmp>"+ti["question"][25*n:]+"</xmp>"
+            ti["question"]=zfc
+        if not language(ti["ans"]):
+            n=int(len(ti["ans"])/25)
+            zfc=""
+            for i in range(n):
+                zfc=zfc+"<xmp>"+ti["ans"][25*i:25*(i+1)]+"</xmp>"
+            zfc=zfc+"<xmp>"+ti["ans"][25*n:]+"</xmp>"
+            ti["ans"]=zfc
     return collection
 @web.route("/ybk")
 def zhuye():
-    html=open("index.html","r",encoding="utf-8").read()
-    return html
+    return render_template('index.html')
 @web.route("/ybklibrary")
 def library():
     lesson = int(request.args.get("lesson","1"))
@@ -64,12 +79,11 @@ def library():
     return dumps(response_data,cls=JSONEncoder)
 @web.route("/ybk/lssx")
 def lssx():
-    html=open("lssx.html","r",encoding="utf-8").read()
-    return html
+    return render_template('lssx.html')
 @web.route("/ybk/sjjg")
 def sjjg():
-    html=open("sjjg.html","r",encoding="utf-8").read()
-    return html
+    return render_template('sjjg.html')
 
-web.run(host="0.0.0.0",port=80)#运行服务器
+#web.run(host="0.0.0.0",port=80)#运行服务器
+web.run()
 
