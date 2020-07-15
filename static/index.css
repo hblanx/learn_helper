@@ -3,13 +3,30 @@
     margin: 20px 0 10px 20px
 }
 .main{
-    width: auto;
+    width: 70%;
     height: 500px;
-    margin: 20px 40px;
+    margin: 20px 20px 10px 40px;
     padding:15px;
     border-style:solid;
     border-radius:2em;    
+    float: left;
 }
 .p_msg{
-    margin:5px 5px 5px 20px
+    margin:15px 5px 15px 30px;
+    float: left;
+    border-style:solid;
+    border-radius:2em; 
+    width: auto;
+    padding:15px 15px 40px 15px;
+    background-image: url("../static/shu_background.jpg");
 } 
+#w_p{
+    color:white;
+    font-size: 15px;
+}
+#toux{
+    border-radius:2em;
+    margin: 0 0 5px 0;
+    padding: 5px;
+    background-color: white;
+}
