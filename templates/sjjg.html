@@ -10,6 +10,7 @@
         #ans{
             font-size: 20px;
             color: #ff4500;
+            width: 100px;
         }
     </style>
 </head>
@@ -58,10 +59,10 @@
                     res = data.data;
                     for (var i = 0; i <= res.length; i++) {
                         try {
-                            html += `    <tr><td>
-                      ` + res[i].question + `      </td>
-                    <td>` + res[i].ans + `</td>>
-                    <td><p id="ans">` + res[i].correct_ans + `  </p></td></tr>`}
+                            html += `    <tr><td><p>
+                      ` + res[i].question + `      </p></td>
+                    <td><p>` + res[i].ans + `</p></td>>
+                    <td><p id="ans">` + res[i].correct_ans + `    </p></td></tr>`}
                     catch (error) {
                     }$('.sheet').html(html)
                 }}

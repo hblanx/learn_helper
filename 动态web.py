@@ -29,44 +29,14 @@ def af_request(resp):
 CORS(web, supports_credentials=True)
 
 
-lssx_collection=client["mosoteach_ans"]["lssx1"]
+lssx_collection=client["mosoteach_ans"]["lssx_html"]
 sjjg_collection=client["mosoteach_ans"]["sjjg1"]
 def lesson_c(lesson):
     if lesson==1:
         return list(lssx_collection.find())
     elif lesson==2:
         return list(sjjg_collection.find())
-def language(zfc):#检测输入字符串是否合法
-    if "<a" in zfc:
-        return False
-    elif "< a" in zfc:
-        return False
-    elif "<A" in zfc:
-        return False
-    elif "< A" in zfc:
-        return False
-    else:
-        return True
 
-def fenhang(collection):
-    for ti in collection:
-        ti["question"] = ti["question"].replace("\n","")#一些乱码处理
-        ti["ans"] = ti["ans"].replace("\n","")
-        if not language(ti["question"]):
-            n=int(len(ti["question"])/25)
-            zfc=""
-            for i in range(n):
-                zfc=zfc+"<xmp>"+ti["question"][25*i:25*(i+1)]+"</xmp>"
-            zfc=zfc+"<xmp>"+ti["question"][25*n:]+"</xmp>"
-            ti["question"]=zfc
-        if not language(ti["ans"]):
-            n=int(len(ti["ans"])/25)
-            zfc=""
-            for i in range(n):
-                zfc=zfc+"<xmp>"+ti["ans"][25*i:25*(i+1)]+"</xmp>"
-            zfc=zfc+"<xmp>"+ti["ans"][25*n:]+"</xmp>"
-            ti["ans"]=zfc
-    return collection
 @web.route("/ybk")
 def zhuye():
     return render_template('index.html')
@@ -74,8 +44,7 @@ def zhuye():
 def library():
     lesson = int(request.args.get("lesson","1"))
     collection=lesson_c(lesson)
-    data=fenhang(collection)
-    response_data={"code": 0,"msg":"", "data": data}
+    response_data={"code": 0,"msg":"", "data": collection}
     return dumps(response_data,cls=JSONEncoder)
 @web.route("/ybk/lssx")
 def lssx():
