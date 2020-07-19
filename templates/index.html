@@ -9,16 +9,17 @@
     <link rel="stylesheet"  href="/static/index.css">
 </head>
 <body>
-    <ul class="nav nav-pills">
+    <div class="header">
+           <ul class="nav nav-pills">
         <li role="presentation" class="active"><a href="/ybk">主页</a></li>
-        <li role="presentation"><a href="/ybk/ans">主页</a></li>
-    </ul>
+        <li role="presentation"><a href="/ybk/ans">云班课题库查询</a></li>
+    </ul> 
+    </div>
     <div class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>成功</strong>已连接至服务器
+        <strong>成功</strong>   已连接至服务器
     </div>
-    <hr/>
-    <div>
+    <div class="content">
         <h1 id="head_min">这里是服务器主页</h1>
         <div class ="p_msg">
             <img id="toux" src="/static/hblanx.jpg"/>
@@ -26,6 +27,7 @@
         </div>    
         <div class="main">   
             <p>1核1G服务器，加载题目时出去喝口水吧</br>
+                现在在题库里只能查到数据结构和离散数学的题目</br>
                 项目的github主页
                 <a href="https://github.com/hblanx/learn_helper.git"target="_blank">点击传送</a>
             </p>
