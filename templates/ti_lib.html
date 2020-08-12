@@ -16,12 +16,15 @@
     <div class="panel panel-default">
         <div class="panel-heading">这里是题库中心</div>
         <div class="panel-body">
-          <p>选择你要查询的科目并点击查询</p>
+          <p>请先选择你要查询的科目，现已支持模糊搜索，搜索题目时尽量与原题一致</p>
         </div>
       <select class="chose">
           <option value="1">离散数学</option>
           <option value="2">数据结构</option>
       </select>
+      <div class="tiInput">
+        <textarea rows="3" cols="20" placeholder="请输入题目"></textarea>
+    </div>   
       <button class="btn">查询！</button>
     <hr/>
         <table class="table">
@@ -43,17 +46,23 @@
 <script>
     $(function(){
         $('.btn').click(function(){
-            console.log('点击')
             var lesson=$('.chose').val();
+            var ti=$('.tiInput textarea').val();
+            ;console.log("new")
             //和后台做交互              
             var html = '';
+            var postUrl="library"
+            var data=JSON.stringify({"lesson":lesson,"ti":ti})
+
             $.ajax({
-                url: 'http://47.115.53.70:80/ybklibrary?lesson='+lesson,
+                url: postUrl,
                 dataType: "JSON",
                 contentType: "application/json;charset=utf-8",
-                type: 'get',
+                type: 'post',
+                data:data,
 
                 success: function (data) {
+                    console.log("run?")
                     res = data.data;
                     for (var i = 0; i <= res.length; i++) {
                         try {

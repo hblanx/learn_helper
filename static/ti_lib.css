@@ -16,11 +16,22 @@
 }
 .chose{
     display: block;
-    width: 300px;
+    width: 150px;
     height: 34px;
     padding: 6px 12px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    margin:0 0 20px 20px;
+}
+.tiInput{
     margin:20px 20px;
+}
+.tiInput textarea{
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width:500px;
+    padding: 5px 2px;
 }
