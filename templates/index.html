@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,35 +7,54 @@
     <title>首页</title>
     <link rel="stylesheet" href="/static/bootstrap.min.css">
     <link rel="stylesheet"  href="/static/index.css">
+    <!--a标签网址记得改-->
 </head>
 <body>
     <div class="header">
            <ul class="nav nav-pills">
-        <li role="presentation" class="active"><a href="/ybk">主页</a></li>
-        <li role="presentation"><a href="/ybk/ans">云班课题库查询</a></li>
-    </ul> 
-    </div>
-    <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>成功</strong>   已连接至服务器
+        <li role="presentation" class="active"><a href="http://47.115.53.70">主页</a></li>
+        <li role="presentation"><a href="/ybk">云班课题库查询</a></li>
+    </ul>
+    <span></span> 
     </div>
     <div class="content">
-        <h1 id="head_min">这里是服务器主页</h1>
+        <div id="head_min">
+            <div class="jumbotron">
+                <h1>欢迎来到hblanx的个人网站</h1>
+                <p>网站正在施工中</p>
+                <p><a class="btn btn-primary btn-lg" href="https://github.com/hblanx/learn_helper" role="button" target="_blank">查看github项目</a></p>
+              </div>
+        </div>
         <div class ="p_msg">
             <img id="toux" src="/static/hblanx.jpg"/>
-            <p id="w_p">常用ID:hblanx<br>邮箱：1121lesale@gmail.com</p>
+            <p id="w_p">常用ID:hblanx<br>邮箱：1121lesale@gmail.com<br>职业：在校学生</p>
         </div>    
-        <div class="main">   
-            <p>1核1G服务器，加载题目时出去喝口水吧</br>
-                现在在题库里只能查到数据结构和离散数学的题目</br>
-                项目的github主页
-                <a href="https://github.com/hblanx/learn_helper.git"target="_blank">点击传送</a>
-            </p>
+        <div class="main">
+            <div class="board">
+                <div>木板</div>
+                <p>
+                现在已经支持搜题了，档次一下子就上来了</br>
+                不过在题库里只有数据结构和离散数学两课的题目</br>
+                </p>
+            </div>
+            <div class="aim">
+                <div>计划中</div>
+                <p>
+                暂时白嫖阿里云的服务器，但不久就要到期了</br>
+                正在备案域名中...</br>
+                </p>
+            </div>   
+
         </div>
     </div>
+    <div class="foot">
 
+    </div>
+    <canvas id="c"></canvas>
 </body>
 <script rel="stylesheet" src="/static/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src='/static/TweenMax.min.js'></script>
+<script type="text/javascript" src="/static/bg.js"></script>
 <script rel="stylesheet" src="/static/bootstrap.min.js"></script>
 
 </html>
