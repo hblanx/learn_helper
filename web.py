@@ -51,7 +51,7 @@ def lesson_c(lesson,ti):
 @web.route("/")
 def zhuye():
     return render_template('index.html')
-@web.route("/ybk/library",methods=["POST"])
+@web.route("/ybklibrary",methods=["POST"])
 def library():
     postForm=json.loads(request.get_data(as_text=True))
     '''对于前端POST请求发送过来的json数据，Flask后台可使用 request.get_data() 来接收数据，

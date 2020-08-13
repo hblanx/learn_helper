@@ -49,10 +49,9 @@
         $('.btn').click(function(){
             var lesson=$('.chose').val();
             var ti=$('.tiInput textarea').val();
-            ;console.log("new")
             //和后台做交互              
             var html = '';
-            var postUrl="library"
+            var postUrl="ybklibrary"
             var data=JSON.stringify({"lesson":lesson,"ti":ti})
 
             $.ajax({
