@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request,make_response
 from flask import render_template
+from datetime import timedelta
 from pymongo import MongoClient
 from json import dumps
 import re
@@ -8,6 +9,7 @@ import json
 from bson import ObjectId
 
 web = Flask(__name__)
+web.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=30)
 
 client = MongoClient()
 
