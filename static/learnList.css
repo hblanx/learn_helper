@@ -42,12 +42,11 @@ body{
     left:35px;
 }
 .content{
-    margin-top: 20px;
     padding: 5px 10px 30px 20px;
     background-color: white;
     width: 1400px;
-    border-radius:0 0 4px 4px;
-    margin:0 auto;/*水平居中*/
+    border-radius:0 0 6px 6px;
+    margin:0 auto 50px auto;/*水平居中*/
 }
 .content h3{
     position: relative;
@@ -66,12 +65,13 @@ body{
     height: 220px;
 }
 .msgBox img{
-    height: 200px;
+    width: 400px;
     float: left;
 }
 .msgBox div{
     float: left;
     margin: 0 0 0 10px;
 }
+
 
     
