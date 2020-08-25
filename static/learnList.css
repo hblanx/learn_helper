@@ -1,0 +1,77 @@
+body{
+    background-color:#3caed13b;
+}
+.bigHead{
+    width: 100%;
+}
+.header span{
+    position: absolute;
+    color:#009fcf;
+    border-bottom:solid #009fcf;
+    height:2px;
+    width: 96%;
+    bottom:8px;
+    left:20px;
+}
+.header{
+    background-color: white;
+    position: relative;
+    height: 55px;
+}
+.bigHead{
+    overflow:hidden;
+    position: relative;
+    background-color: white;
+}
+.bigHead h1{
+    margin: 40px 0 40px 40px;
+    color: #009fcf;
+    float: left;
+}
+.bigHead p{
+    color: #007ea5;
+    float: left;
+    margin: 57px 0px 40px 10px;
+}
+.bigHead span{
+    position: absolute;
+    border-bottom:solid #009fcf;
+    height:2px;
+    width: 400px;
+    bottom:23px;
+    left:35px;
+}
+.content{
+    margin-top: 20px;
+    padding: 5px 10px 30px 20px;
+    background-color: white;
+    width: 1400px;
+    border-radius:0 0 4px 4px;
+    margin:0 auto;/*水平居中*/
+}
+.content h3{
+    position: relative;
+}
+.content h3 span{
+    border-left:solid #009fcf;
+    position: absolute;
+    color:#009fcf;
+    height:90%;
+    width: 2px;
+    bottom:0;
+    left:-5px;
+}
+.msgBox{
+    overflow: hidden;
+    height: 220px;
+}
+.msgBox img{
+    height: 200px;
+    float: left;
+}
+.msgBox div{
+    float: left;
+    margin: 0 0 0 10px;
+}
+
+    

@@ -51,6 +51,9 @@ def lesson_c(lesson,ti):
 @web.route("/")
 def zhuye():
     return render_template('index.html')
+@web.route("/list")
+def xueXiList():
+    return render_template('learnList.html')
 @web.route("/ybklibrary",methods=["POST"])
 def library():
     postForm=json.loads(request.get_data(as_text=True))

@@ -41,14 +41,14 @@
 }
 .header{
     background-color: white;
-    position: relative;;
+    position: relative;
 }
 .header span{
     position: absolute;
     color:#009fcf;
     border-bottom:solid #009fcf;
     height:2px;
-    width: 95%;
+    width: 96%;
     bottom:-6px;
     left:20px;
 }
@@ -85,4 +85,9 @@
     height: 60px;
     background-color: #009fcf;
     float: left;
+}
+.icp{
+    color: #ffffff;
+    margin: 20px 20px;
+    float: right;
 }
