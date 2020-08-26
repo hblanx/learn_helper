@@ -7,6 +7,7 @@ from json import dumps
 import re
 import json
 from bson import ObjectId
+from flask import jsonify
 
 web = Flask(__name__)
 web.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=30)
@@ -54,6 +55,9 @@ def zhuye():
 @web.route("/list")
 def xueXiList():
     return render_template('learnList.html')
+@web.route("/ybk")
+def ti_lib():
+    return render_template('ti_lib.html')
 @web.route("/ybklibrary",methods=["POST"])
 def library():
     postForm=json.loads(request.get_data(as_text=True))
@@ -67,9 +71,21 @@ def library():
 
     response_data={"code": 0,"msg":"", "data": collection}
     return dumps(response_data,cls=JSONEncoder)
-@web.route("/ybk")
-def lssx():
-    return render_template('ti_lib.html')
+@web.route("/listmsg")
+def xueXiListMsg():
+    collection=client["learn_helper"]["learnList"]
+    results=collection.find({"_id":{"$gte":0}})
+    returnList=[]
+    for result in results:
+        returnList.append(result)
+    response_data={"code": 0,"msg":"", "data": returnList}
+    #return jsonify({"data":returnList})也可以使用
+    return dumps(response_data,cls=JSONEncoder)
 
-web.run(host="0.0.0.0",port=80)#运行服务器
-#web.run()
+
+#web.run(host="0.0.0.0",port=80)#运行服务器
+web.run()
+
+
+
+
