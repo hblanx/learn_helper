@@ -78,13 +78,13 @@ def xueXiListMsg():
     returnList=[]
     for result in results:
         returnList.append(result)
-    response_data={"code": 0,"msg":"", "data": returnList}
+    response_data={"code": 0,"data": returnList}
     #return jsonify({"data":returnList})也可以使用
     return dumps(response_data,cls=JSONEncoder)
 
 
-#web.run(host="0.0.0.0",port=80)#运行服务器
-web.run()
+web.run(host="0.0.0.0",port=80)#运行服务器
+#web.run()
 
 
 

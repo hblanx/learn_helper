@@ -50,6 +50,7 @@ body{
 }
 .content h3{
     position: relative;
+    border-bottom:1px solid #009fcf;
 }
 .content h3 span{
     border-left:solid #009fcf;
@@ -62,7 +63,7 @@ body{
 }
 .msgBox{
     overflow: hidden;
-    height: 220px;
+    height: 230px;
 }
 .msgBox img{
     width: 400px;

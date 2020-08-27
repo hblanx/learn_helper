@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -63,8 +63,9 @@
                 data:data,
 
                 success: function (data) {
-                    console.log("run?")
                     res = data.data;
+                    console.log("run?")
+                    console.log(res)
                     for (var i = 0; i <= res.length; i++) {
                         try {
                             html += `    <tr><td><p>
