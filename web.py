@@ -1,13 +1,14 @@
 from flask import Flask
 from flask import request,make_response
 from flask import render_template
+from flask import send_from_directory
 from datetime import timedelta
 from pymongo import MongoClient
 from json import dumps
 import re
 import json
 from bson import ObjectId
-from flask import jsonify
+import os
 
 web = Flask(__name__)
 web.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=30)
@@ -80,8 +81,14 @@ def xueXiListMsg():
     response_data={"code": 0,"data": returnList}
     #return jsonify({"data":returnList})也可以使用
     return dumps(response_data,cls=JSONEncoder)
-
-
+@web.route("/download")
+def downloadMain():
+     which = int(request.args.get("item","1"))#获得表单,默认为1？
+     #print("which="+str(which))
+     if(which==1):
+         path=r"/home/github/learn_helper/download"
+         return send_from_directory(path, "测试安装包.apk", as_attachment=True)
+     return 0
 web.run(host="0.0.0.0",port=80)#运行服务器
 #web.run()
 

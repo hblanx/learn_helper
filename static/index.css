@@ -12,7 +12,7 @@
 
 .main{
     width: 76%;
-    height: 500px;
+    height: 400px;
     padding:15px;
     border-radius:2em;    
     float: right;
@@ -20,6 +20,7 @@
 }
 .p_msg{
     float: left;
+    height: 400px;
     border-radius:2em; 
     width: 22%;
     padding:15px 15px 40px 15px;
@@ -99,4 +100,27 @@
 .ef_logo{
     float: left;
     margin: 15px 0 0 10px;
+}
+.adv_l{
+    margin: 10px 0 20px 0;
+    padding: 12px;
+    float: left;
+    height: 200px;
+    width: 76%;
+    border-radius:2em;   
+    background-color:#3caed13b;
+}
+.adv_r{
+    margin: 10px 0 20px 0;
+    width: 22%;
+    height: 200px; 
+    float: right;
+}
+.adv_r img{
+    width:100%;
+    border-radius:2px; 
+}
+.adv_l div{
+    margin:2px 0
+    border-left: solid #009fcf;
 }
