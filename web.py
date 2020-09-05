@@ -44,10 +44,9 @@ def lesson_c(lesson,ti):
         elif int(lesson)==2:
             for u in sjjg_collection.find({'question':re.compile(ti)}):
                 returnList.append(u)
-    #print('长度'+str(len(ti)))
     if len(returnList)==0:
         returnList=[{'_id': '1', 'question': '抱歉找不到这道题\n', 'correct_ans': '--', 'ans': '--\n'}]
-    return returnList
+    return returnList,len(returnList)
 
 @web.route("/")
 def zhuye():
@@ -69,9 +68,9 @@ def library():
     ti=postForm["ti"]
     collection=lesson_c(lesson,ti)
 
-    response_data={"code": 0,"msg":"", "data": collection}
+    response_data={"code": 0, "length":collection[1], "data": collection[0]}
     return dumps(response_data,cls=JSONEncoder)
-@web.route("/listmsg")
+@web.route("/listmsg",methods=["GET"])
 def xueXiListMsg():
     collection=client["learn_helper"]["learnList"]
     results=collection.find({"_id":{"$gte":0}})

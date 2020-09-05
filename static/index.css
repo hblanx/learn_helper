@@ -40,17 +40,19 @@
     margin:0 auto;
 }
 .header{
+    margin: 10px 10px 0 10px;
     background-color: white;
     position: relative;
+    overflow: hidden;
 }
 .header span{
     position: absolute;
     color:#009fcf;
     border-bottom:solid #009fcf;
     height:2px;
-    width: 96%;
-    bottom:-6px;
-    left:20px;
+    width: 88%;
+    bottom:3px;
+    left:130px;
 }
 #head_min div{
     background-color: white;
@@ -90,4 +92,11 @@
     color: #ffffff;
     margin: 20px 20px;
     float: right;
+}
+.logo{
+    float: left;
+}
+.ef_logo{
+    float: left;
+    margin: 15px 0 0 10px;
 }
