@@ -120,7 +120,8 @@
     width:100%;
     border-radius:2px; 
 }
-.adv_l div{
-    margin:2px 0
+.div_h{
+    margin:2px 0;
     border-left: solid #009fcf;
+    padding: 0 0 0 3px;
 }
