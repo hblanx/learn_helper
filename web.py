@@ -8,7 +8,6 @@ from json import dumps
 import re
 import json
 from bson import ObjectId
-import os
 
 web = Flask(__name__)
 web.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=30)
@@ -36,6 +35,7 @@ CORS(web, supports_credentials=True)
 
 lssx_collection=client["mosoteach_ans"]["lssx_html"]
 sjjg_collection=client["mosoteach_ans"]["sjjg1"]
+jsll_collection=client["chaoxing"]["jsll"]
 def lesson_c(lesson,ti):
     returnList=[]
     if len(ti)>0:
@@ -44,6 +44,9 @@ def lesson_c(lesson,ti):
                 returnList.append(u)
         elif int(lesson)==2:
             for u in sjjg_collection.find({'question':re.compile(ti)}):
+                returnList.append(u)
+        elif int(lesson)==3:
+            for u in jsll_collection.find({'question':re.compile(ti)}):
                 returnList.append(u)
     if len(returnList)==0:
         returnList=[{'_id': '1', 'question': '抱歉找不到这道题\n', 'correct_ans': '--', 'ans': '--\n'}]
@@ -74,7 +77,7 @@ def library():
 @web.route("/listmsg",methods=["GET"])
 def xueXiListMsg():
     collection=client["learn_helper"]["learnList"]
-    results=collection.find({"_id":{"$gte":0}})
+    results=collection.find({"_id":{"$gte":0}})# 找到_id大于0的数据
     returnList=[]
     for result in results:
         returnList.append(result)
